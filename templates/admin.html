@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar">
+    <div class="nav-brand">
+        <i class="fas fa-graduation-cap"></i>
+        <span>College Enquiry Admin Panel</span>
+    </div>
+    <div class="nav-items">
+        <span>Welcome, Admin</span>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+    </div>
+</nav>
+
+<div class="admin-container">
+    <div class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <p>Manage the chatbot knowledge base and system settings</p>
+    </div>
+    
+    <div class="admin-actions">
+        <h2>Management Options</h2>
+        <div class="action-grid">
+            <a href="{{ url_for('admin_queries') }}" class="action-card">
+                <i class="fas fa-database"></i>
+                <h3>Manage FAQs</h3>
+                <p>Add, edit or remove predefined questions and answers</p>
+            </a>
+            <div class="action-card">
+                <i class="fas fa-users"></i>
+                <h3>User Management</h3>
+                <p>View and manage user accounts (Coming Soon)</p>
+            </div>
+            <div class="action-card">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Analytics</h3>
+                <p>View usage statistics and common queries (Coming Soon)</p>
+            </div>
+            <div class="action-card">
+                <i class="fas fa-cog"></i>
+                <h3>Settings</h3>
+                <p>Configure system settings and preferences (Coming Soon)</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
