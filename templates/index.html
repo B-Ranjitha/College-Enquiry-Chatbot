@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="welcome-section">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+             <h1>BBC College Enquiry Chatbot</h1>
+        </div>
+        <p>Your virtual assistant for all BBC College-related queries</p>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Powered</h3>
+                <p>Intelligent responses to your questions</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h3>24/7 Available</h3>
+                <p>Get answers anytime, anywhere</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-info-circle"></i>
+                <h3>Comprehensive Info</h3>
+                <p>Admissions, courses, fees and more</p>
+            </div>
+        </div>
+    </div>
+    <div class="auth-actions">
+        <h2>Get Started</h2>
+        <div class="button-group">
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
