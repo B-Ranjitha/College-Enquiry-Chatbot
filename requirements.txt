@@ -1,0 +1,6 @@
+Flask==2.3.3
+openai==0.28.0
+python-dotenv==1.0.0
+sqlite3
+config
+datatime
