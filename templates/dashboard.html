@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar">
+    <div class="nav-brand">
+        <i class="fas fa-graduation-cap"></i>
+        <span>College Enquiry Chatbot</span>
+    </div>
+    <div class="nav-items">
+        <span>Welcome, {{ username }}</span>
+        <a href="{{ url_for('chat') }}" class="btn btn-primary">Chat Now</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+    </div>
+</nav>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Welcome to Your Dashboard</h1>
+        <p>How can we assist you today?</p>
+    </div>
+    
+    <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-grid">
+            <div class="action-card" data-question="admission">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Admission Info</h3>
+                <p>Learn about our admission process</p>
+            </div>
+            <div class="action-card" data-question="courses">
+                <i class="fas fa-book"></i>
+                <h3>Courses</h3>
+                <p>Explore our programs</p>
+            </div>
+            <div class="action-card" data-question="fees">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Fee Structure</h3>
+                <p>View tuition and fees</p>
+            </div>
+            <div class="action-card" data-question="scholarships">
+                <i class="fas fa-award"></i>
+                <h3>Scholarships</h3>
+                <p>Financial aid opportunities</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Additional styles for dashboard */
+    .dashboard-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .dashboard-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: white;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    .dashboard-header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+    
+    .quick-actions {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .quick-actions h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #333;
+    }
+    
+    .action-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .action-card {
+        padding: 1.5rem;
+        border-radius: 10px;
+        background: #f8f9fa;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .action-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-color: #667eea;
+    }
+    
+    .action-card i {
+        font-size: 2rem;
+        color: #667eea;
+        margin-bottom: 1rem;
+    }
+    
+    .action-card h3 {
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    
+    .action-card p {
+        color: #666;
+    }
+</style>
+
+<script>
+    // Add click event listeners to all action cards
+    document.querySelectorAll('.action-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const questionType = this.getAttribute('data-question');
+            let question = '';
+            
+            switch(questionType) {
+                case 'admission':
+                    question = 'Tell me about the admission process';
+                    break;
+                case 'courses':
+                    question = 'What courses do you offer?';
+                    break;
+                case 'fees':
+                    question = 'What is the fee structure?';
+                    break;
+                case 'scholarships':
+                    question = 'Do you offer scholarships?';
+                    break;
+            }
+            
+            if (question) {
+                // Redirect to chat page with the question as a parameter
+                window.location.href = `/chat?question=${encodeURIComponent(question)}`;
+            }
+        });
+    });
+</script>
+{% endblock %}
