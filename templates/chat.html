@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<nav class="navbar">
+    <div class="nav-brand">
+        <i class="fas fa-graduation-cap"></i>
+        <span>College Enquiry Chatbot</span>
+    </div>
+    <div class="nav-items">
+        <span>Welcome, {{ username }}</span>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+    </div>
+</nav>
+
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>College Enquiry Assistant</h2>
+        <p>Ask me about admissions, courses, fees, scholarships, and more!</p>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+        {% for message in chat_history %}
+            <div class="message {{ 'user-message' if message[0] == 'user' else 'ai-message' }}">
+                <div class="message-content">
+                    <p>{{ message[1] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your question here...">
+        <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+{% endblock %}
